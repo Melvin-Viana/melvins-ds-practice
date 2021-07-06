@@ -14,9 +14,10 @@ const selectionSort = (arr) => {
             }
         }
         if (i !== min) {
-            let temp = arr[min];
-            arr[min] = arr[i];
-            arr[i] = temp;
+            [arr[min], arr[i]] = [arr[i], arr[min]];
+            // let temp = arr[min];
+            // arr[min] = arr[i];
+            // arr[i] = temp;
         }
     }
     // If the value is smaller update the current min
@@ -24,4 +25,28 @@ const selectionSort = (arr) => {
     // At the end
     return arr;
 };
+
+const getRandomDataSet = require('../../RandomDataSet');
+console.time('selectionSort')
 console.log(selectionSort([5,3,4,2,1]))
+console.timeEnd('selectionSort');
+console.time('selectionSort')
+console.log(selectionSort([5,4,3,2,1]))
+console.timeEnd('selectionSort');
+
+const dataSet1 = getRandomDataSet(10)
+const dataSet2 = getRandomDataSet(1000)
+const dataSet3 = getRandomDataSet(10000)
+console.log(dataSet1)
+console.time('selectionSort1');
+console.log(selectionSort(dataSet1))
+console.timeEnd('selectionSort1');
+
+// console.time('selectionSort2');
+// console.log(selectionSort(dataSet2))
+// console.timeEnd('selectionSort2');
+
+// console.time('selectionSort3');
+// console.log(selectionSort(dataSet3))
+// console.timeEnd('selectionSort3');
+// console.log(dataSet3[10000-2])
