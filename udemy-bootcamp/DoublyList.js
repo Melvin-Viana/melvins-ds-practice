@@ -116,22 +116,50 @@ class DoublyLinkedLIst {
             return node;
         }
     }
-}
+ 
+    reverse() {
+        // Store head and a temp variable
+        let temp = null;
+        let current = this.head;
+        this.tail = this.head;
+        while (current) {
+            // Store prev
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+        this.head = temp.prev;
+        return this;
+    }
+}   
+   
+
 const getRandomData = require('../RandomDataSet');
 const data = ['Harry', 'Ron', 'Hermione', 'Fred'];
 const head = new DoublyLinkedLIst();
 for (let num of data) {
     head.push(num);
 }
-// console.log(head.pop())
-head.unshift(-1)
-// console.log(head.shift())
-// console.log(head.get(-1));
-// console.log(head.get(1));
-// console.log(head.get(3));
-// console.log(head.get(4));
-head.set(3,'Draco')
-head.tail
-head.insert(5,'bobby')
-console.log(head.remove(5))
-// console.log(head
+// // console.log(head.pop())
+// head.unshift(-1)
+// // console.log(head.shift())
+// // console.log(head.get(-1));
+// // console.log(head.get(1));
+// // console.log(head.get(3));
+// // console.log(head.get(4));
+// head.set(3,'Draco')
+// head.tail
+// head.insert(5,'bobby')
+// console.log(head.remove(5))
+// console.log(head)
+// // console.log(head
+// console.log(head.reverse())
+
+var doublyLinkedList = new DoublyLinkedLIst();
+[5,10,15,20].forEach((num) => doublyLinkedList.push(num));
+console.log(doublyLinkedList.get(0).val)
+console.log(doublyLinkedList.get(1).val)
+console.log(doublyLinkedList.get(2).val)
+console.log(doublyLinkedList.get(3).val)
+console.log(doublyLinkedList.get(4))
